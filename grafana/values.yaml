@@ -1,0 +1,21 @@
+
+common:
+  namespace: openshift-logging
+  name: grafana
+  cluster_domain: <base domain>
+
+role:
+  saName: grafana
+
+configmap:
+  datasource_configmap: grafana-datasources
+  grafana_config: grafana-config
+  dashboard_cm: grafana-dashboards
+
+
+loki:
+  gatewaySVC:
+  gatewayCA:
+  lokistackName: logging-loki
+  lokiNamespace: openshift-logging
+

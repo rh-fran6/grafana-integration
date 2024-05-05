@@ -1,0 +1,24 @@
+
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    service.alpha.openshift.io/serving-cert-secret-name: grafana-tls
+  labels:
+    app: {{ .Values.common.name }}
+  name: {{ .Values.common.name }}
+  namespace: {{ .Values.common.namespace }}
+spec:
+  ports:
+  - name: https
+    port: 8443
+    protocol: TCP
+    targetPort: https
+  - name: http-grafana
+    port: 3000
+    protocol: TCP
+    targetPort: http-grafana
+  selector:
+    app: {{ .Values.common.name }}
+  sessionAffinity: None
+  type: ClusterIP
